@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 1200" width="900" height="1200">
+  <defs>
+    <linearGradient id="wallClean" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#6b7480"/>
+      <stop offset="100%" stop-color="#3c4149"/>
+    </linearGradient>
+    <linearGradient id="shine" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#ffffff" stop-opacity="0.35"/>
+      <stop offset="50%" stop-color="#ffffff" stop-opacity="0.05"/>
+      <stop offset="100%" stop-color="#ffffff" stop-opacity="0"/>
+    </linearGradient>
+  </defs>
+  <rect width="900" height="1200" fill="url(#wallClean)"/>
+  <!-- side walls -->
+  <path d="M0 0 L280 520 L280 1200 L0 1200 Z" fill="#565c65"/>
+  <path d="M900 0 L620 520 L620 1200 L900 1200 Z" fill="#565c65"/>
+  <!-- back wall taper -->
+  <path d="M280 520 L620 520 L560 900 L340 900 Z" fill="#4a4f57"/>
+
+  <!-- prong shapes -->
+  <path d="M330 620 q-20 -90 60 -110 q60 -14 60 60 l0 130 l-90 0 z" fill="#6f7680"/>
+  <path d="M570 620 q20 -90 -60 -110 q-60 -14 -60 60 l0 130 l90 0 z" fill="#6f7680"/>
+  <rect x="420" y="560" width="60" height="220" rx="16" fill="#3f434a"/>
+
+  <!-- base plate, clean -->
+  <path d="M340 900 L560 900 L610 1060 L290 1060 Z" fill="#565c65"/>
+  <circle cx="450" cy="960" r="9" fill="#2c2f34"/>
+
+  <!-- shine highlight -->
+  <ellipse cx="400" cy="700" rx="140" ry="260" fill="url(#shine)"/>
+  <ellipse cx="600" cy="880" rx="90" ry="160" fill="url(#shine)" opacity="0.6"/>
+
+  <!-- lower handle bar -->
+  <rect x="320" y="1060" width="260" height="46" rx="20" fill="#7d8590"/>
+  <rect x="330" y="1066" width="240" height="14" rx="7" fill="#c7ccd2" opacity="0.6"/>
+
+</svg>

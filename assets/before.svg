@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 1200" width="900" height="1200">
+  <defs>
+    <linearGradient id="wallDirty" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#1b1c1e"/>
+      <stop offset="100%" stop-color="#0a0a0b"/>
+    </linearGradient>
+    <radialGradient id="grime" cx="50%" cy="60%" r="60%">
+      <stop offset="0%" stop-color="#8a6a2a" stop-opacity="0.55"/>
+      <stop offset="100%" stop-color="#8a6a2a" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <rect width="900" height="1200" fill="url(#wallDirty)"/>
+  <!-- side walls -->
+  <path d="M0 0 L280 520 L280 1200 L0 1200 Z" fill="#141416"/>
+  <path d="M900 0 L620 520 L620 1200 L900 1200 Z" fill="#141416"/>
+  <!-- back wall taper -->
+  <path d="M280 520 L620 520 L560 900 L340 900 Z" fill="#1c1d20"/>
+
+  <!-- prong shapes -->
+  <path d="M330 620 q-20 -90 60 -110 q60 -14 60 60 l0 130 l-90 0 z" fill="#26282c"/>
+  <path d="M570 620 q20 -90 -60 -110 q-60 -14 -60 60 l0 130 l90 0 z" fill="#26282c"/>
+  <rect x="420" y="560" width="60" height="220" rx="16" fill="#1a1b1e"/>
+
+  <!-- base plate -->
+  <path d="M340 900 L560 900 L610 1060 L290 1060 Z" fill="#2c2c2e"/>
+  <circle cx="450" cy="960" r="9" fill="#0a0a0b"/>
+
+  <!-- grime / rust stains -->
+  <ellipse cx="470" cy="920" rx="220" ry="160" fill="url(#grime)"/>
+  <path d="M360 900 q30 60 100 60 q90 4 140 -30 q30 40 -10 70 q-90 40 -220 10 q-40 -30 -10 -110z" fill="#8a5a1f" opacity="0.55"/>
+  <circle cx="330" cy="940" r="14" fill="#7a4d18" opacity="0.5"/>
+  <circle cx="560" cy="1000" r="10" fill="#7a4d18" opacity="0.5"/>
+
+  <!-- lower handle bar -->
+  <rect x="320" y="1060" width="260" height="46" rx="20" fill="#3a3a3c"/>
+  <rect x="330" y="1066" width="240" height="14" rx="7" fill="#57585c" opacity="0.5"/>
+
+</svg>
