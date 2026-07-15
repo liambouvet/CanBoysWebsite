@@ -1,23 +1,26 @@
 (function () {
   'use strict';
 
-  // ---- Configuration ----
-  var PHONE_NUMBER = 'PUT_PHONE_NUMBER_HERE'; // e.g. "+13105550123"
-  var SMS_MESSAGE = "Hi, I'd like to book Can Boys. My address is [address], my trash day is [day], and I have [number] cans.";
+  var PHONE_NUMBER = '3104087303';
+  var PRICING = { 1: 20, 2: 40, 3: 55, 4: 70, 5: 90 };
+  var POWER_WASH_PRICE = 50;
 
-  function buildSmsHref() {
-    var body = encodeURIComponent(SMS_MESSAGE);
-    // iOS uses "&body=", most Android clients use "?body="
-    var isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent);
-    var separator = isIOS ? '&' : '?';
-    return 'sms:' + PHONE_NUMBER + separator + 'body=' + body;
+  function computeTotal(cans, powerWash) {
+    if (!cans || !PRICING[cans]) return null;
+    var total = PRICING[cans];
+    if (powerWash) total += POWER_WASH_PRICE;
+    return total;
   }
 
-  function wireBookButtons() {
-    var href = buildSmsHref();
-    document.querySelectorAll('[data-book]').forEach(function (el) {
-      el.setAttribute('href', href);
-    });
+  function formatPrice(value) {
+    return value === null || value === undefined ? '—' : '$' + value;
+  }
+
+  function buildSmsHref(phone, body) {
+    var encoded = encodeURIComponent(body);
+    var isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent);
+    var separator = isIOS ? '&' : '?';
+    return 'sms:' + phone + separator + 'body=' + encoded;
   }
 
   // ---- Nav scroll state + mobile toggle ----
@@ -25,6 +28,7 @@
     var nav = document.getElementById('nav');
     var toggle = document.getElementById('navToggle');
     var mobile = document.getElementById('navMobile');
+    if (!nav || !toggle || !mobile) return;
 
     function onScroll() {
       if (window.scrollY > 12) {
@@ -128,10 +132,147 @@
     setPosition(55);
   }
 
+  // ---- About page: pricing calculator ----
+  function initPricingCalculator() {
+    var canButtons = document.getElementById('canButtons');
+    var powerWashGroup = document.getElementById('calcPowerWash');
+    var totalValue = document.getElementById('calcTotalValue');
+    var bookNowLink = document.getElementById('calcBookNow');
+    if (!canButtons || !powerWashGroup || !totalValue || !bookNowLink) return;
+
+    var state = { cans: null, powerWash: false };
+
+    function render() {
+      totalValue.textContent = formatPrice(computeTotal(state.cans, state.powerWash));
+
+      var params = new URLSearchParams();
+      if (state.cans) params.set('cans', state.cans);
+      params.set('powerwash', state.powerWash ? 'yes' : 'no');
+      bookNowLink.setAttribute('href', 'book.html?' + params.toString());
+    }
+
+    canButtons.querySelectorAll('.can-btn').forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        canButtons.querySelectorAll('.can-btn').forEach(function (b) { b.classList.remove('active'); });
+        btn.classList.add('active');
+        state.cans = parseInt(btn.getAttribute('data-cans'), 10);
+        render();
+      });
+    });
+
+    powerWashGroup.querySelectorAll('.toggle-btn').forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        powerWashGroup.querySelectorAll('.toggle-btn').forEach(function (b) { b.classList.remove('active'); });
+        btn.classList.add('active');
+        state.powerWash = btn.getAttribute('data-value') === 'yes';
+        render();
+      });
+    });
+
+    render();
+  }
+
+  // ---- Book page: trash-day weekday legend is static, no JS needed ----
+
+  // ---- Book page: booking form (prefill, estimated total, SMS submission) ----
+  function initBookingForm() {
+    var form = document.getElementById('bookingForm');
+    if (!form) return;
+
+    var cansSelect = document.getElementById('cans');
+    var powerWashGroup = document.getElementById('formPowerWash');
+    var totalToggle = document.getElementById('estimatedTotalToggle');
+    var totalDetail = document.getElementById('estimatedTotalDetail');
+    var totalIcon = document.getElementById('estimatedTotalIcon');
+    var totalValue = document.getElementById('estimatedTotalValue');
+    var estCansLine = document.getElementById('estCansLine');
+    var estPowerWashLine = document.getElementById('estPowerWashLine');
+
+    var state = { powerWash: false };
+
+    // Prefill from query params carried over from the About-page calculator
+    var params = new URLSearchParams(window.location.search);
+    var prefCans = params.get('cans');
+    var prefPowerWash = params.get('powerwash');
+
+    if (prefCans && cansSelect) {
+      cansSelect.value = prefCans;
+    }
+    if (prefPowerWash === 'yes') {
+      state.powerWash = true;
+      powerWashGroup.querySelectorAll('.toggle-btn').forEach(function (b) {
+        b.classList.toggle('active', b.getAttribute('data-value') === 'yes');
+      });
+    }
+
+    function renderEstimate() {
+      var cans = cansSelect.value ? parseInt(cansSelect.value, 10) : null;
+      var total = computeTotal(cans, state.powerWash);
+      totalValue.textContent = formatPrice(total);
+      estCansLine.textContent = cans ? (cans + (cans === 1 ? ' can' : ' cans')) : '—';
+      estPowerWashLine.textContent = state.powerWash ? 'Yes (+$50)' : 'No';
+    }
+
+    cansSelect.addEventListener('change', renderEstimate);
+
+    powerWashGroup.querySelectorAll('.toggle-btn').forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        powerWashGroup.querySelectorAll('.toggle-btn').forEach(function (b) { b.classList.remove('active'); });
+        btn.classList.add('active');
+        state.powerWash = btn.getAttribute('data-value') === 'yes';
+        renderEstimate();
+      });
+    });
+
+    // Estimated total collapse/expand
+    totalToggle.addEventListener('click', function () {
+      var collapsed = totalDetail.classList.toggle('collapsed');
+      totalToggle.setAttribute('aria-expanded', collapsed ? 'false' : 'true');
+      totalIcon.innerHTML = collapsed ? '&#43;' : '&minus;';
+    });
+
+    renderEstimate();
+
+    // Submission: build a prefilled SMS with all the booking details
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+
+      if (!form.checkValidity()) {
+        form.reportValidity();
+        return;
+      }
+
+      var name = document.getElementById('name').value.trim();
+      var phone = document.getElementById('phone').value.trim();
+      var address = document.getElementById('address').value.trim();
+      var city = document.getElementById('city').value;
+      var trashDay = document.getElementById('trashDay').value;
+      var cansVal = cansSelect.value;
+      var notes = document.getElementById('notes').value.trim();
+      var total = computeTotal(cansVal ? parseInt(cansVal, 10) : null, state.powerWash);
+
+      var lines = [
+        'Hi, I\'d like to book Can Boys.',
+        'Name: ' + name,
+        'Phone: ' + phone,
+        'Address: ' + address,
+        'City: ' + city,
+        'Trash day: ' + trashDay,
+        'Cans: ' + cansVal,
+        'Driveway Power Wash: ' + (state.powerWash ? 'Yes' : 'No'),
+        'Notes: ' + (notes || 'None'),
+        'Estimated total: ' + formatPrice(total)
+      ];
+
+      window.location.href = buildSmsHref(PHONE_NUMBER, lines.join('\n'));
+    });
+  }
+
   document.addEventListener('DOMContentLoaded', function () {
-    wireBookButtons();
     initNav();
     initReveal();
     initCompare();
+    initPricingCalculator();
+    initBookingForm();
   });
 })();

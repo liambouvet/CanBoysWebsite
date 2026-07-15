@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 560" width="800" height="560" role="img" aria-labelledby="title desc">
+  <title id="title">Trash day collection map placeholder</title>
+  <desc id="desc">Placeholder for the official City of Manhattan Beach residential refuse collection schedule map</desc>
+  <rect width="800" height="560" fill="#ffffff"/>
+  <rect x="1" y="1" width="798" height="558" fill="none" stroke="#e2e8f0" stroke-width="2"/>
+
+  <text x="400" y="46" font-family="Inter, Arial, sans-serif" font-size="15" font-weight="700" fill="#4b5563" text-anchor="middle" letter-spacing="1">CITY OF MANHATTAN BEACH</text>
+  <text x="400" y="76" font-family="Inter, Arial, sans-serif" font-size="24" font-weight="800" fill="#0c1116" text-anchor="middle">Residential Refuse Collection Schedule</text>
+
+  <g opacity="0.55">
+    <polygon points="120,120 340,110 360,260 260,340 130,320" fill="#ff8a3d"/>
+    <polygon points="340,110 560,130 540,270 360,260" fill="#c77dff"/>
+    <polygon points="130,320 260,340 300,460 160,470" fill="#ffd23d"/>
+    <polygon points="260,340 360,260 540,270 460,460 300,460" fill="#5ec8f2"/>
+    <polygon points="540,270 560,130 660,150 660,420 460,460" fill="#4caf50"/>
+  </g>
+
+  <text x="400" y="255" font-family="Inter, Arial, sans-serif" font-size="18" font-weight="700" fill="#ffffff" text-anchor="middle" opacity="0.9">MAP PLACEHOLDER</text>
+  <text x="400" y="280" font-family="Inter, Arial, sans-serif" font-size="13" fill="#ffffff" text-anchor="middle" opacity="0.85">Official schedule graphic pending</text>
+
+  <g font-family="Inter, Arial, sans-serif" font-size="13" font-weight="600" fill="#4b5563">
+    <circle cx="90" cy="500" r="6" fill="#ff8a3d"/>
+    <text x="104" y="505">Monday</text>
+    <circle cx="200" cy="500" r="6" fill="#c77dff"/>
+    <text x="214" y="505">Tuesday</text>
+    <circle cx="320" cy="500" r="6" fill="#ffd23d"/>
+    <text x="334" y="505">Wednesday</text>
+    <circle cx="460" cy="500" r="6" fill="#5ec8f2"/>
+    <text x="474" y="505">Thursday</text>
+    <circle cx="580" cy="500" r="6" fill="#4caf50"/>
+    <text x="594" y="505">Friday</text>
+  </g>
+</svg>
