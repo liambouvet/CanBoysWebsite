@@ -781,17 +781,17 @@ ul { list-style: none; margin: 0; padding: 0; }
   justify-content: center;
   box-shadow: var(--shadow-soft);
 }
-.team-body { padding: 18px 20px 20px; }
-.team-name { font-weight: 700; font-size: 16px; margin: 0 0 4px; }
+.team-body { padding: 20px 22px 24px; }
+.team-name { font-weight: 700; font-size: 17px; margin: 0 0 4px; }
 .team-role {
-  font-size: 11.5px;
+  font-size: 12px;
   font-weight: 700;
   letter-spacing: 0.6px;
   color: var(--blue);
   text-transform: uppercase;
   margin: 0;
 }
-.story-body p { font-size: 13px; color: var(--ink-soft); line-height: 1.55; margin: 0; }
+.story-body p { font-size: 14px; color: var(--ink-soft); line-height: 1.6; margin: 0; }
 
 /* ==========================================================
    About: promise grid
@@ -806,7 +806,7 @@ ul { list-style: none; margin: 0; padding: 0; }
 .promise-card {
   background: #fff;
   border-radius: var(--radius-md);
-  padding: 18px 20px;
+  padding: 22px 24px;
   box-shadow: var(--shadow-soft);
   display: flex;
   gap: 12px;
@@ -814,9 +814,9 @@ ul { list-style: none; margin: 0; padding: 0; }
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 .promise-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-blue); }
-.promise-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--blue); margin-top: 6px; flex-shrink: 0; }
-.promise-title { font-weight: 700; font-size: 14.5px; margin: 0 0 4px; }
-.promise-text { font-size: 12.5px; color: var(--ink-soft); margin: 0; line-height: 1.5; }
+.promise-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--blue); margin-top: 7px; flex-shrink: 0; }
+.promise-title { font-weight: 700; font-size: 15px; margin: 0 0 4px; }
+.promise-text { font-size: 13.5px; color: var(--ink-soft); margin: 0; line-height: 1.5; }
 
 /* ==========================================================
    About: pricing calculator + price list
@@ -832,13 +832,13 @@ ul { list-style: none; margin: 0; padding: 0; }
 .price-list-card {
   background: #fff;
   border-radius: var(--radius-md);
-  padding: 24px 22px;
+  padding: 30px 28px;
   box-shadow: var(--shadow-soft);
 }
 .calculator-card h3,
-.price-list-card h3 { font-size: 15px; font-weight: 700; margin: 0 0 14px; }
+.price-list-card h3 { font-size: 16px; font-weight: 700; margin: 0 0 18px; }
 
-.can-buttons { display: flex; gap: 8px; margin-bottom: 18px; }
+.can-buttons { display: flex; gap: 8px; margin-bottom: 20px; }
 .can-btn {
   flex: 1;
   aspect-ratio: 1;
@@ -846,13 +846,12 @@ ul { list-style: none; margin: 0; padding: 0; }
   border: 1px solid rgba(15, 23, 42, 0.1);
   background: #fff;
   font-weight: 700;
-  font-size: 15px;
+  font-size: 16px;
   color: var(--ink);
   cursor: pointer;
   transition: all 0.2s ease;
 }
 .can-btn:hover { border-color: var(--blue); }
-.calculator-card .btn-primary { padding: 13px 24px; font-size: 14.5px; }
 .can-btn.active {
   background: var(--blue);
   border-color: var(--blue);
@@ -866,25 +865,23 @@ ul { list-style: none; margin: 0; padding: 0; }
   justify-content: space-between;
   background: var(--blue);
   color: #fff;
-  padding: 14px 18px;
+  padding: 16px 20px;
   border-radius: 14px;
   font-weight: 700;
-  margin-bottom: 18px;
+  margin-bottom: 20px;
 }
-.total-bar .total-value { font-size: 18px; font-weight: 800; }
+.total-bar .total-value { font-size: 20px; font-weight: 800; }
 
 .addon-row {
   display: flex;
   align-items: center;
   justify-content: space-between;
   gap: 12px;
-  margin-bottom: 16px;
+  margin-bottom: 18px;
   flex-wrap: wrap;
 }
-.addon-label { font-weight: 600; font-size: 13.5px; color: var(--ink); }
+.addon-label { font-weight: 600; font-size: 14px; color: var(--ink); }
 .addon-label .price-note { color: var(--ink-soft); font-weight: 500; }
-
-#calcPowerWash.toggle-pair .toggle-btn { padding: 10px 16px; font-size: 13.5px; }
 
 .toggle-pair { display: flex; gap: 10px; }
 .toggle-btn {
@@ -1070,50 +1067,4 @@ ul { list-style: none; margin: 0; padding: 0; }
   .form-row { grid-template-columns: 1fr; }
   .booking-card { padding: 26px 20px; }
   .calculator-card, .price-list-card { padding: 24px 20px; }
-}
-
-/* ---------- About-only container/section/heading scale ----------
-   Matches the now-approved Home density (1120px container, 64px
-   section padding, tighter heading-group sizing). .section/.section-tint/
-   .section-head/.label-blue/.section-title/.underline are shared with
-   Book, so these are scoped to fire only when the page's own nav shows
-   "About" as the active link — i.e. only on about.html — via a :has()
-   check on the header, never matching Book's copy of these classes.
-   Alignment stays centered (About's own screenshots show centered
-   headings, unlike Home's left-aligned ones), so text-align is
-   untouched here. No HTML changes. */
-header.nav:has(.nav-links a.active[href="about.html"]) ~ main .section {
-  padding: 64px 24px;
-  max-width: 1120px;
-}
-header.nav:has(.nav-links a.active[href="about.html"]) ~ main .section-tint {
-  padding-top: 64px;
-  padding-bottom: 64px;
-}
-header.nav:has(.nav-links a.active[href="about.html"]) ~ main .section-tint > * {
-  max-width: 1120px;
-}
-header.nav:has(.nav-links a.active[href="about.html"]) ~ main .section-head {
-  margin-bottom: 40px;
-}
-header.nav:has(.nav-links a.active[href="about.html"]) ~ main .label-blue {
-  margin-bottom: 10px;
-}
-header.nav:has(.nav-links a.active[href="about.html"]) ~ main .section-title {
-  font-size: clamp(28px, 3.6vw, 36px);
-  line-height: 1.18;
-}
-header.nav:has(.nav-links a.active[href="about.html"]) ~ main .underline {
-  width: 48px;
-  margin-top: 14px;
-}
-
-@media (max-width: 560px) {
-  header.nav:has(.nav-links a.active[href="about.html"]) ~ main .section {
-    padding: 46px 18px;
-  }
-  header.nav:has(.nav-links a.active[href="about.html"]) ~ main .section-tint {
-    padding-top: 46px;
-    padding-bottom: 46px;
-  }
 }

@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>About — Can Boys · Manhattan Beach</title>
+<meta name="description" content="Meet the Can Boys: two Manhattan Beach locals cleaning trash cans. See our story, our standards, and simple, fair pricing.">
+<link rel="icon" href="assets/logo.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<header class="nav" id="nav">
+  <div class="nav-inner">
+    <a href="index.html" class="nav-logo">
+      <img src="assets/logo.svg" alt="Can Boys logo">
+    </a>
+    <nav class="nav-links">
+      <a href="index.html">Home</a>
+      <a href="about.html" class="active">About</a>
+      <a href="book.html">Book</a>
+    </nav>
+    <a href="book.html" class="btn btn-primary btn-book nav-cta">Book Now</a>
+    <button class="nav-toggle" id="navToggle" aria-label="Open menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+  <div class="nav-mobile" id="navMobile">
+    <a href="index.html">Home</a>
+    <a href="about.html" class="active">About</a>
+    <a href="book.html">Book</a>
+    <a href="book.html" class="btn btn-primary btn-book">Book Now</a>
+  </div>
+</header>
+
+<main>
+
+  <!-- PAGE BANNER -->
+  <section class="page-banner">
+    <div class="page-banner-circle pbc-1"></div>
+    <div class="page-banner-circle pbc-2"></div>
+    <div class="page-banner-circle pbc-3"></div>
+    <div class="page-banner-inner reveal">
+      <span class="page-banner-label">Manhattan Beach, CA</span>
+      <h1 class="page-banner-title">Meet the Can Boys</h1>
+      <p class="page-banner-sub">Two local students. One simple service.</p>
+    </div>
+  </section>
+
+  <!-- FULL WIDTH PHOTO -->
+  <div class="about-photo-wrap reveal">
+    <img src="assets/about-photo-placeholder.svg" alt="Trash cans loaded on a cart, ready for cleaning (placeholder photo)" class="about-photo">
+  </div>
+
+  <!-- WHO WE ARE -->
+  <section class="section">
+    <div class="section-head reveal">
+      <span class="label-blue">THE TEAM</span>
+      <h2 class="section-title">Who we are<span class="underline"></span></h2>
+    </div>
+
+    <div class="team-grid reveal">
+      <div class="team-card">
+        <div class="team-visual">
+          <div class="team-avatar">LB</div>
+          <span class="team-visual-note">Photo coming soon</span>
+        </div>
+        <div class="team-body">
+          <p class="team-name">Liam Bouvet</p>
+          <p class="team-role">Co-Founder</p>
+        </div>
+      </div>
+      <div class="team-card story-card">
+        <div class="team-visual story-visual">
+          <div class="story-icon">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M12 21s-7-4.35-9.5-8.5C.5 8.5 2.5 5 6 5c2 0 3.5 1.2 4 2 0.5-0.8 2-2 4-2 3.5 0 5.5 3.5 3.5 7.5C19 16.65 12 21 12 21z" stroke="#0057ff" stroke-width="1.8" stroke-linejoin="round"/></svg>
+          </div>
+        </div>
+        <div class="team-body">
+          <p class="team-name">Why we started Can Boys</p>
+          <div class="story-body">
+            <p>Two Manhattan Beach locals who got tired of grimy cans — so we started fixing it, one street at a time.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- WHAT YOU CAN EXPECT -->
+  <section class="section section-tint">
+    <div class="section-head reveal">
+      <span class="label-blue">OUR PROMISE</span>
+      <h2 class="section-title">What you can expect<span class="underline"></span></h2>
+    </div>
+
+    <div class="promise-grid reveal">
+      <div class="promise-card">
+        <span class="promise-dot"></span>
+        <div>
+          <p class="promise-title">Not happy? Don't pay.</p>
+          <p class="promise-text">No questions asked. Full satisfaction or no charge.</p>
+        </div>
+      </div>
+      <div class="promise-card">
+        <span class="promise-dot"></span>
+        <div>
+          <p class="promise-title">We show up when we say</p>
+          <p class="promise-text">After your pickup, every time. No rescheduling, no surprises.</p>
+        </div>
+      </div>
+      <div class="promise-card">
+        <span class="promise-dot"></span>
+        <div>
+          <p class="promise-title">Eco-safe cleaners only</p>
+          <p class="promise-text">Biodegradable soaps. Safe for your family and our coast.</p>
+        </div>
+      </div>
+      <div class="promise-card">
+        <span class="promise-dot"></span>
+        <div>
+          <p class="promise-title">Local to the neighborhood</p>
+          <p class="promise-text">We live here. We care about this community.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PRICING -->
+  <section class="section" id="pricing">
+    <div class="section-head reveal">
+      <span class="label-blue">PRICING</span>
+      <h2 class="section-title">Simple &amp; fair<span class="underline"></span></h2>
+    </div>
+
+    <div class="price-grid reveal">
+      <div class="calculator-card">
+        <h3>Price your service</h3>
+        <div class="can-buttons" id="canButtons" role="group" aria-label="Number of cans">
+          <button type="button" class="can-btn" data-cans="1">1</button>
+          <button type="button" class="can-btn" data-cans="2">2</button>
+          <button type="button" class="can-btn" data-cans="3">3</button>
+          <button type="button" class="can-btn" data-cans="4">4</button>
+          <button type="button" class="can-btn" data-cans="5">5</button>
+        </div>
+        <div class="total-bar">
+          <span>Your total</span>
+          <span class="total-value" id="calcTotalValue">—</span>
+        </div>
+        <div class="addon-row">
+          <span class="addon-label">Driveway Power Wash? <span class="price-note">+$50</span></span>
+        </div>
+        <div class="toggle-pair" id="calcPowerWash" role="group" aria-label="Driveway Power Wash">
+          <button type="button" class="toggle-btn" data-value="yes">Yes</button>
+          <button type="button" class="toggle-btn active" data-value="no">No</button>
+        </div>
+        <a href="book.html" class="btn btn-primary btn-block" id="calcBookNow" style="margin-top:22px;">Book Now</a>
+        <p class="micro-note">Not happy? Don't pay.</p>
+      </div>
+
+      <div class="price-list-card">
+        <h3>Full price list</h3>
+        <ul class="price-list">
+          <li><span>1 can</span><strong>$20</strong></li>
+          <li><span>2 cans</span><strong>$40</strong></li>
+          <li><span>3 cans</span><strong>$55 <span class="badge-best">Best value</span></strong></li>
+          <li><span>4 cans</span><strong>$70</strong></li>
+          <li><span>5 cans</span><strong>$90</strong></li>
+        </ul>
+        <div class="price-divider"></div>
+        <p class="addon-title">Driveway Power Wash Add-On +$50</p>
+        <p class="addon-desc">A thorough power wash around your cans after we clean.</p>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="footer">
+  <img src="assets/logo.svg" alt="Can Boys logo" class="footer-logo">
+  <p class="footer-area">Manhattan Beach</p>
+  <p class="footer-phone">310-408-7303</p>
+</footer>
+
+<script src="js/script.js"></script>
+</body>
+</html>
