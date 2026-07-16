@@ -389,7 +389,7 @@ ul { list-style: none; margin: 0; padding: 0; }
 }
 
 /* ---------- Before / After ---------- */
-.compare-wrap { position: relative; max-width: 500px; margin: 0 auto; }
+.compare-wrap { position: relative; max-width: 540px; margin: 0 auto; }
 .drag-pill {
   position: absolute;
   top: -16px;
@@ -483,7 +483,7 @@ ul { list-style: none; margin: 0; padding: 0; }
 .step-card {
   background: #fff;
   border-radius: var(--radius-md);
-  padding: 24px 22px;
+  padding: 26px 24px;
   box-shadow: var(--shadow-soft);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
@@ -492,21 +492,21 @@ ul { list-style: none; margin: 0; padding: 0; }
   box-shadow: var(--shadow-blue);
 }
 .step-badge {
-  width: 36px;
-  height: 36px;
+  width: 38px;
+  height: 38px;
   border-radius: 50%;
   background: var(--blue);
   color: #fff;
   font-weight: 800;
-  font-size: 15px;
+  font-size: 16px;
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-bottom: 12px;
+  margin-bottom: 14px;
   box-shadow: 0 10px 24px -6px rgba(0, 87, 255, 0.45);
 }
-.step-card h3 { font-size: 16.5px; font-weight: 700; margin: 0 0 6px; }
-.step-card p { font-size: 13px; color: var(--ink-soft); line-height: 1.5; margin: 0; }
+.step-card h3 { font-size: 17px; font-weight: 700; margin: 0 0 8px; }
+.step-card p { font-size: 13.5px; color: var(--ink-soft); line-height: 1.55; margin: 0; }
 
 /* ---------- Standards ---------- */
 .standards-grid {
@@ -517,7 +517,7 @@ ul { list-style: none; margin: 0; padding: 0; }
 .standard-card {
   background: #fff;
   border-radius: var(--radius-md);
-  padding: 24px 22px;
+  padding: 26px 24px;
   box-shadow: var(--shadow-soft);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
@@ -526,17 +526,17 @@ ul { list-style: none; margin: 0; padding: 0; }
   box-shadow: var(--shadow-blue);
 }
 .icon-badge {
-  width: 38px;
-  height: 38px;
+  width: 40px;
+  height: 40px;
   border-radius: 12px;
   background: var(--blue-light);
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-bottom: 12px;
+  margin-bottom: 14px;
 }
-.standard-card h3 { font-size: 16.5px; font-weight: 700; margin: 0 0 6px; }
-.standard-card p { font-size: 13px; color: var(--ink-soft); line-height: 1.5; margin: 0; }
+.standard-card h3 { font-size: 17px; font-weight: 700; margin: 0 0 8px; }
+.standard-card p { font-size: 13.5px; color: var(--ink-soft); line-height: 1.55; margin: 0; }
 
 /* ---------- Final CTA ---------- */
 .cta-card {
@@ -591,33 +591,30 @@ ul { list-style: none; margin: 0; padding: 0; }
    page — About/Book have no #home element, so .section/.section-head
    there are completely unaffected. */
 #home ~ .section {
-  padding: 64px 24px;
+  padding: 72px 24px;
   max-width: 1120px;
 }
 #home ~ .section-tint {
-  padding-top: 64px;
-  padding-bottom: 64px;
+  padding-top: 72px;
+  padding-bottom: 72px;
 }
 #home ~ .section-tint > * { max-width: 1120px; }
 #home ~ .section .section-head,
 #home ~ .section-tint .section-head {
-  margin-bottom: 38px;
+  margin-bottom: 42px;
 }
 #home ~ .section .label-blue,
 #home ~ .section-tint .label-blue {
-  font-size: 11px;
-  font-weight: 700;
-  letter-spacing: 1.3px;
-  margin-bottom: 8px;
+  font-size: 11.5px;
+  margin-bottom: 10px;
 }
 #home ~ .section .section-title,
 #home ~ .section-tint .section-title {
-  font-size: clamp(28px, 3.6vw, 38px);
-  line-height: 1.15;
+  font-size: clamp(26px, 3.4vw, 36px);
 }
 #home ~ .section .underline,
 #home ~ .section-tint .underline {
-  margin-top: 12px;
+  margin-top: 14px;
 }
 
 /* ---------- Reveal animation ---------- */
@@ -652,8 +649,8 @@ ul { list-style: none; margin: 0; padding: 0; }
   .stats-grid { grid-template-columns: repeat(2, 1fr); gap: 14px; }
   .stat-card { padding: 20px 14px; }
   .section { padding: 64px 18px; }
-  #home ~ .section { padding: 46px 18px; }
-  #home ~ .section-tint { padding-top: 46px; padding-bottom: 46px; }
+  #home ~ .section { padding: 52px 18px; }
+  #home ~ .section-tint { padding-top: 52px; padding-bottom: 52px; }
   .cta-card { padding: 44px 24px; border-radius: 24px; }
   .hero-actions { flex-direction: column; width: 100%; }
   .hero-actions .btn { width: 100%; }
