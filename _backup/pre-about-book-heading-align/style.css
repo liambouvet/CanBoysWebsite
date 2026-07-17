@@ -1081,15 +1081,9 @@ ul { list-style: none; margin: 0; padding: 0; }
    Book, so these are scoped to fire only when the page's own nav shows
    "About" as the active link — i.e. only on about.html — via a :has()
    check on the header, never matching Book's copy of these classes.
-
-   CORRECTION: re-examining the original About screenshots the same way
-   that fixed Home's headings shows "THE TEAM"/"Who we are", "OUR
-   PROMISE"/"What you can expect", and "PRICING"/"Simple & fair" all
-   sit flush against the LEFT edge of the card grid below them (same
-   820px column as .team-grid/.promise-grid/.price-grid), not centered
-   as previously assumed. Constraining the heading group to that same
-   820px width and left-aligning it reproduces that. Card/grid widths
-   themselves are unchanged. No HTML changes. */
+   Alignment stays centered (About's own screenshots show centered
+   headings, unlike Home's left-aligned ones), so text-align is
+   untouched here. No HTML changes. */
 header.nav:has(.nav-links a.active[href="about.html"]) ~ main .section {
   padding: 64px 24px;
   max-width: 1120px;
@@ -1098,11 +1092,11 @@ header.nav:has(.nav-links a.active[href="about.html"]) ~ main .section-tint {
   padding-top: 64px;
   padding-bottom: 64px;
 }
-header.nav:has(.nav-links a.active[href="about.html"]) ~ main .section .section-head,
-header.nav:has(.nav-links a.active[href="about.html"]) ~ main .section-tint .section-head {
-  max-width: 820px;
-  margin: 0 auto 40px;
-  text-align: left;
+header.nav:has(.nav-links a.active[href="about.html"]) ~ main .section-tint > * {
+  max-width: 1120px;
+}
+header.nav:has(.nav-links a.active[href="about.html"]) ~ main .section-head {
+  margin-bottom: 40px;
 }
 header.nav:has(.nav-links a.active[href="about.html"]) ~ main .label-blue {
   margin-bottom: 10px;
@@ -1113,7 +1107,7 @@ header.nav:has(.nav-links a.active[href="about.html"]) ~ main .section-title {
 }
 header.nav:has(.nav-links a.active[href="about.html"]) ~ main .underline {
   width: 48px;
-  margin: 14px 0 0;
+  margin-top: 14px;
 }
 
 @media (max-width: 560px) {
@@ -1133,23 +1127,15 @@ header.nav:has(.nav-links a.active[href="about.html"]) ~ main .underline {
    link. Matches the approved Home/About density (1120px container,
    64px section padding, tighter heading-group sizing) for the "Your
    info" section only — the trash-day-section heading above it is
-   already scoped by its own Book-exclusive class elsewhere.
-
-   CORRECTION: re-examining the original Book screenshots the same way
-   that fixed Home's headings shows "Your info" sits flush against the
-   LEFT edge of the booking card below it (640px column), and
-   "MANHATTAN BEACH"/"Find your trash day" sits flush against the LEFT
-   edge of the trash-day map (820px column) — not centered as
-   previously assumed. Card/map widths themselves are unchanged. No
-   HTML changes. */
+   already scoped by its own Book-exclusive class elsewhere. Alignment
+   stays centered (unchanged, matches Book's own screenshots). No HTML
+   changes. */
 header.nav:has(.nav-links a.active[href="book.html"]) ~ main .section {
   padding: 64px 24px;
   max-width: 1120px;
 }
-header.nav:has(.nav-links a.active[href="book.html"]) ~ main .section > .section-head {
-  max-width: 640px;
-  margin: 0 auto 40px;
-  text-align: left;
+header.nav:has(.nav-links a.active[href="book.html"]) ~ main .section-head {
+  margin-bottom: 40px;
 }
 header.nav:has(.nav-links a.active[href="book.html"]) ~ main .label-blue {
   margin-bottom: 10px;
@@ -1160,19 +1146,14 @@ header.nav:has(.nav-links a.active[href="book.html"]) ~ main .section-title {
 }
 header.nav:has(.nav-links a.active[href="book.html"]) ~ main .underline {
   width: 48px;
-  margin: 14px 0 0;
-}
-.trash-day-section .section-head {
-  max-width: none;
-  margin: 0 0 24px;
-  text-align: left;
+  margin-top: 14px;
 }
 .trash-day-section .label-blue { margin-bottom: 10px; }
 .trash-day-section .section-title {
   font-size: clamp(28px, 3.6vw, 36px);
   line-height: 1.18;
 }
-.trash-day-section .underline { width: 48px; margin: 14px 0 0; }
+.trash-day-section .underline { width: 48px; margin-top: 14px; }
 
 @media (max-width: 560px) {
   header.nav:has(.nav-links a.active[href="book.html"]) ~ main .section {
