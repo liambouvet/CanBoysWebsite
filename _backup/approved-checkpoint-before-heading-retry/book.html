@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Book — Can Boys · Manhattan Beach</title>
+<meta name="description" content="Book Can Boys trash can cleaning in Manhattan Beach. Find your trash day and request a booking in 60 seconds.">
+<link rel="icon" href="assets/logo.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<header class="nav" id="nav">
+  <div class="nav-inner">
+    <a href="index.html" class="nav-logo">
+      <img src="assets/logo.svg" alt="Can Boys logo">
+    </a>
+    <nav class="nav-links">
+      <a href="index.html">Home</a>
+      <a href="about.html">About</a>
+      <a href="book.html" class="active">Book</a>
+    </nav>
+    <a href="book.html" class="btn btn-primary btn-book nav-cta">Book Now</a>
+    <button class="nav-toggle" id="navToggle" aria-label="Open menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+  <div class="nav-mobile" id="navMobile">
+    <a href="index.html">Home</a>
+    <a href="about.html">About</a>
+    <a href="book.html" class="active">Book</a>
+    <a href="book.html" class="btn btn-primary btn-book">Book Now</a>
+  </div>
+</header>
+
+<main>
+
+  <!-- PAGE BANNER -->
+  <section class="page-banner">
+    <div class="page-banner-circle pbc-1"></div>
+    <div class="page-banner-circle pbc-2"></div>
+    <div class="page-banner-circle pbc-3"></div>
+    <div class="page-banner-inner reveal">
+      <span class="page-banner-label">Easy booking</span>
+      <h1 class="page-banner-title">Book Can Boys</h1>
+      <p class="page-banner-sub">We'll confirm your booking within a few hours.</p>
+    </div>
+  </section>
+
+  <!-- FIND YOUR TRASH DAY -->
+  <section class="trash-day-section">
+    <div class="section-head reveal" style="margin-bottom:28px;">
+      <span class="label-blue">MANHATTAN BEACH</span>
+      <h2 class="section-title">Find your trash day<span class="underline"></span></h2>
+    </div>
+
+    <div class="reveal">
+      <div class="weekday-pills">
+        <span class="weekday-pill" style="--dot:#ff8a3d">Monday</span>
+        <span class="weekday-pill" style="--dot:#c77dff">Tuesday</span>
+        <span class="weekday-pill" style="--dot:#ffd23d">Wednesday</span>
+        <span class="weekday-pill" style="--dot:#5ec8f2">Thursday</span>
+        <span class="weekday-pill" style="--dot:#4caf50">Friday</span>
+      </div>
+      <div class="trash-map-wrap">
+        <img src="assets/trash-day-map-placeholder.svg" alt="City of Manhattan Beach residential refuse collection schedule map (placeholder — official map pending)" class="trash-map-img">
+      </div>
+    </div>
+  </section>
+
+  <!-- YOUR INFO FORM -->
+  <section class="section">
+    <div class="section-head reveal">
+      <h2 class="section-title">Your info<span class="underline"></span></h2>
+    </div>
+
+    <form class="booking-card reveal" id="bookingForm" novalidate>
+      <div class="estimated-total">
+        <button type="button" class="estimated-total-toggle" id="estimatedTotalToggle" aria-expanded="true" aria-controls="estimatedTotalDetail">
+          <div class="estimated-total-head">
+            <div class="estimated-total-text">
+              <div class="estimated-total-label">Estimated total</div>
+              <div class="estimated-total-sub">Updates as you fill in</div>
+            </div>
+            <span class="estimated-total-value" id="estimatedTotalValue">—</span>
+            <span class="estimated-total-icon" id="estimatedTotalIcon">&minus;</span>
+          </div>
+        </button>
+        <div class="estimated-total-detail" id="estimatedTotalDetail">
+          <div class="estimated-total-row"><span>Cans</span><span id="estCansLine">—</span></div>
+          <div class="estimated-total-row"><span>Driveway Power Wash</span><span id="estPowerWashLine">No</span></div>
+        </div>
+      </div>
+
+      <div class="form-row">
+        <div class="field">
+          <label for="name">Name *</label>
+          <input type="text" id="name" name="name" placeholder="Jane Smith" required>
+        </div>
+        <div class="field">
+          <label for="phone">Phone *</label>
+          <input type="tel" id="phone" name="phone" placeholder="(310) 555-0100" required>
+        </div>
+      </div>
+
+      <div class="field">
+        <label for="address">Street Address *</label>
+        <input type="text" id="address" name="address" placeholder="123 Strand Ave" required>
+      </div>
+
+      <div class="form-row">
+        <div class="field">
+          <label for="city">City *</label>
+          <select id="city" name="city" required>
+            <option value="" disabled selected>Select...</option>
+            <option>Sand Section</option>
+            <option>Hill Section</option>
+            <option>Tree Section</option>
+            <option>El Porto</option>
+            <option>Manhattan Village</option>
+          </select>
+        </div>
+        <div class="field">
+          <label for="trashDay">Trash Day *</label>
+          <select id="trashDay" name="trashDay" required>
+            <option value="" disabled selected>Select...</option>
+            <option>Monday</option>
+            <option>Tuesday</option>
+            <option>Wednesday</option>
+            <option>Thursday</option>
+            <option>Friday</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="form-row">
+        <div class="field">
+          <label for="cans">Cans *</label>
+          <select id="cans" name="cans" required>
+            <option value="" disabled selected>How many?</option>
+            <option value="1">1 can</option>
+            <option value="2">2 cans</option>
+            <option value="3">3 cans</option>
+            <option value="4">4 cans</option>
+            <option value="5">5 cans</option>
+          </select>
+        </div>
+        <div class="field">
+          <label>Driveway Power Wash? <span class="price-note">+$50</span></label>
+          <div class="toggle-pair" id="formPowerWash" role="group" aria-label="Driveway Power Wash">
+            <button type="button" class="toggle-btn" data-value="yes">Yes</button>
+            <button type="button" class="toggle-btn active" data-value="no">No</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="field">
+        <label for="notes">Notes (optional)</label>
+        <textarea id="notes" name="notes" rows="3" placeholder="Gate code, where cans are, anything we should know..."></textarea>
+      </div>
+
+      <button type="submit" class="btn btn-primary btn-block btn-lg" id="requestBookingBtn">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><rect x="3" y="5" width="18" height="16" rx="2" stroke="currentColor" stroke-width="2"/><path d="M3 10h18M8 3v4M16 3v4" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+        Request Booking
+      </button>
+      <p class="micro-note">We'll review and confirm. Not happy? Don't pay.</p>
+    </form>
+  </section>
+
+</main>
+
+<footer class="footer">
+  <img src="assets/logo.svg" alt="Can Boys logo" class="footer-logo">
+  <p class="footer-area">Manhattan Beach</p>
+  <p class="footer-phone">310-408-7303</p>
+</footer>
+
+<script src="js/script.js"></script>
+</body>
+</html>
