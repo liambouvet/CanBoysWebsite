@@ -1120,7 +1120,7 @@ header.nav:has(.nav-links a.active[href="about.html"]) ~ main .section-title {
 }
 header.nav:has(.nav-links a.active[href="about.html"]) ~ main .underline {
   width: 48px;
-  margin-top: 14px;
+  margin: 14px 0 0;
 }
 
 @media (max-width: 560px) {
@@ -1176,7 +1176,7 @@ header.nav:has(.nav-links a.active[href="book.html"]) ~ main .section-title {
 }
 header.nav:has(.nav-links a.active[href="book.html"]) ~ main .underline {
   width: 48px;
-  margin-top: 14px;
+  margin: 14px 0 0;
 }
 .trash-day-section .section-head { text-align: left; }
 .trash-day-section .label-blue { display: block; margin-bottom: 10px; }
@@ -1184,7 +1184,7 @@ header.nav:has(.nav-links a.active[href="book.html"]) ~ main .underline {
   font-size: clamp(28px, 3.6vw, 36px);
   line-height: 1.18;
 }
-.trash-day-section .underline { width: 48px; margin-top: 14px; }
+.trash-day-section .underline { width: 48px; margin: 14px 0 0; }
 .weekday-pills { justify-content: flex-start; }
 
 @media (max-width: 560px) {
