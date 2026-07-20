@@ -129,7 +129,7 @@
 
     window.addEventListener('resize', syncImageWidth);
 
-    setPosition(55);
+    setPosition(50);
   }
 
   // ---- About page: pricing calculator ----
