@@ -245,7 +245,6 @@
       var name = document.getElementById('name').value.trim();
       var phone = document.getElementById('phone').value.trim();
       var address = document.getElementById('address').value.trim();
-      var city = document.getElementById('city').value;
       var trashDay = document.getElementById('trashDay').value;
       var cansVal = cansSelect.value;
       var notes = document.getElementById('notes').value.trim();
@@ -256,7 +255,6 @@
         'Name: ' + name,
         'Phone: ' + phone,
         'Address: ' + address,
-        'City: ' + city,
         'Trash day: ' + trashDay,
         'Cans: ' + cansVal,
         'Driveway Power Wash: ' + (state.powerWash ? 'Yes' : 'No'),
