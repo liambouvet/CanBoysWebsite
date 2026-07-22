@@ -23,6 +23,23 @@
     return 'sms:' + phone + separator + 'body=' + encoded;
   }
 
+  // Opening custom-scheme links via location.href is blocked inside
+  // sandboxed iframes (e.g. the Artifact preview) unless the sandbox grants
+  // top-navigation. window.open only needs "allow-popups", which sandboxed
+  // previews generally grant, so try that first and fall back for browsers
+  // that block or ignore it.
+  function openSmsLink(href) {
+    var win = null;
+    try {
+      win = window.open(href, '_blank');
+    } catch (e) {
+      win = null;
+    }
+    if (!win) {
+      window.location.href = href;
+    }
+  }
+
   // ---- Nav scroll state + mobile toggle ----
   function initNav() {
     var nav = document.getElementById('nav');
@@ -262,7 +279,7 @@
         'Estimated total: ' + formatPrice(total)
       ];
 
-      window.location.href = buildSmsHref(PHONE_NUMBER, lines.join('\n'));
+      openSmsLink(buildSmsHref(PHONE_NUMBER, lines.join('\n')));
     });
   }
 
