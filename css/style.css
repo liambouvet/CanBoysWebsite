@@ -1068,6 +1068,8 @@ ul { list-style: none; margin: 0; padding: 0; }
 }
 .field textarea { resize: vertical; min-height: 90px; }
 #formPowerWash.toggle-pair .toggle-btn { padding: 10px 16px; font-size: 13.5px; }
+#formTip.toggle-pair { flex-wrap: wrap; }
+#formTip.toggle-pair .toggle-btn { flex: 1 1 auto; min-width: 64px; padding: 10px 14px; font-size: 13px; }
 #requestBookingBtn { padding: 13px 24px; font-size: 14.5px; }
 .field select { appearance: none; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8'%3E%3Cpath d='M1 1l5 5 5-5' fill='none' stroke='%234b5563' stroke-width='1.6' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 16px center; padding-right: 38px; }
 

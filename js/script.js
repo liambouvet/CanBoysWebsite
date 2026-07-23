@@ -16,6 +16,20 @@
     return value === null || value === undefined ? '—' : '$' + value;
   }
 
+  // tip: { type: 'percent', percent: 0|10|15|20 } or { type: 'custom', amount: number }
+  function computeTip(subtotal, tip) {
+    if (tip.type === 'custom') return tip.amount || 0;
+    if (!tip.percent) return 0;
+    if (subtotal === null) return null;
+    return Math.round(subtotal * tip.percent / 100);
+  }
+
+  function formatTipLine(tip, tipAmount) {
+    if (tip.type === 'custom') return 'Custom (+' + formatPrice(tip.amount || 0) + ')';
+    if (!tip.percent) return 'No tip';
+    return tip.percent + '%' + (tipAmount === null ? '' : ' (+' + formatPrice(tipAmount) + ')');
+  }
+
   function buildSmsHref(phone, body) {
     var encoded = encodeURIComponent(body);
     var isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent);
@@ -198,14 +212,17 @@
 
     var cansSelect = document.getElementById('cans');
     var powerWashGroup = document.getElementById('formPowerWash');
+    var tipGroup = document.getElementById('formTip');
+    var tipCustomInput = document.getElementById('tipCustomAmount');
     var totalToggle = document.getElementById('estimatedTotalToggle');
     var totalDetail = document.getElementById('estimatedTotalDetail');
     var totalIcon = document.getElementById('estimatedTotalIcon');
     var totalValue = document.getElementById('estimatedTotalValue');
     var estCansLine = document.getElementById('estCansLine');
     var estPowerWashLine = document.getElementById('estPowerWashLine');
+    var estTipLine = document.getElementById('estTipLine');
 
-    var state = { powerWash: false };
+    var state = { powerWash: false, tip: { type: 'percent', percent: 0 } };
 
     // Prefill from query params carried over from the About-page calculator
     var params = new URLSearchParams(window.location.search);
@@ -224,10 +241,13 @@
 
     function renderEstimate() {
       var cans = cansSelect.value ? parseInt(cansSelect.value, 10) : null;
-      var total = computeTotal(cans, state.powerWash);
+      var subtotal = computeTotal(cans, state.powerWash);
+      var tipAmount = computeTip(subtotal, state.tip);
+      var total = subtotal === null ? null : subtotal + (tipAmount || 0);
       totalValue.textContent = formatPrice(total);
       estCansLine.textContent = cans ? (cans + (cans === 1 ? ' can' : ' cans')) : '—';
       estPowerWashLine.textContent = state.powerWash ? 'Yes (+$50)' : 'No';
+      estTipLine.textContent = formatTipLine(state.tip, tipAmount);
     }
 
     cansSelect.addEventListener('change', renderEstimate);
@@ -239,6 +259,29 @@
         state.powerWash = btn.getAttribute('data-value') === 'yes';
         renderEstimate();
       });
+    });
+
+    tipGroup.querySelectorAll('.toggle-btn').forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        tipGroup.querySelectorAll('.toggle-btn').forEach(function (b) { b.classList.remove('active'); });
+        btn.classList.add('active');
+        var value = btn.getAttribute('data-value');
+        if (value === 'custom') {
+          state.tip = { type: 'custom', amount: parseFloat(tipCustomInput.value) || 0 };
+          tipCustomInput.style.display = '';
+          tipCustomInput.focus();
+        } else {
+          state.tip = { type: 'percent', percent: parseInt(value, 10) };
+          tipCustomInput.style.display = 'none';
+        }
+        renderEstimate();
+      });
+    });
+
+    tipCustomInput.addEventListener('input', function () {
+      var raw = parseFloat(tipCustomInput.value);
+      state.tip = { type: 'custom', amount: raw >= 0 ? Math.round(raw) : 0 };
+      renderEstimate();
     });
 
     // Estimated total collapse/expand
@@ -265,7 +308,9 @@
       var trashDay = document.getElementById('trashDay').value;
       var cansVal = cansSelect.value;
       var notes = document.getElementById('notes').value.trim();
-      var total = computeTotal(cansVal ? parseInt(cansVal, 10) : null, state.powerWash);
+      var subtotal = computeTotal(cansVal ? parseInt(cansVal, 10) : null, state.powerWash);
+      var tipAmount = computeTip(subtotal, state.tip);
+      var total = subtotal === null ? null : subtotal + (tipAmount || 0);
 
       var lines = [
         'Hi, I\'d like to book Can Boys.',
@@ -275,6 +320,7 @@
         'Trash day: ' + trashDay,
         'Cans: ' + cansVal,
         'Driveway Power Wash: ' + (state.powerWash ? 'Yes' : 'No'),
+        'Tip: ' + formatTipLine(state.tip, tipAmount),
         'Notes: ' + (notes || 'None'),
         'Estimated total: ' + formatPrice(total)
       ];

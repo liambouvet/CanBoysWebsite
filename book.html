@@ -93,6 +93,7 @@
         <div class="estimated-total-detail" id="estimatedTotalDetail">
           <div class="estimated-total-row"><span>Cans</span><span id="estCansLine">—</span></div>
           <div class="estimated-total-row"><span>Driveway Power Wash</span><span id="estPowerWashLine">No</span></div>
+          <div class="estimated-total-row"><span>Tip</span><span id="estTipLine">No tip</span></div>
         </div>
       </div>
 
@@ -143,6 +144,18 @@
             <button type="button" class="toggle-btn active" data-value="no">No</button>
           </div>
         </div>
+      </div>
+
+      <div class="field">
+        <label>Tip <span class="price-note">(optional)</span></label>
+        <div class="toggle-pair" id="formTip" role="group" aria-label="Tip">
+          <button type="button" class="toggle-btn active" data-value="0">No tip</button>
+          <button type="button" class="toggle-btn" data-value="10">10%</button>
+          <button type="button" class="toggle-btn" data-value="15">15%</button>
+          <button type="button" class="toggle-btn" data-value="20">20%</button>
+          <button type="button" class="toggle-btn" data-value="custom">Custom</button>
+        </div>
+        <input type="number" id="tipCustomAmount" name="tipCustomAmount" min="0" step="1" inputmode="decimal" placeholder="Custom tip amount ($)" style="display:none;">
       </div>
 
       <div class="field">
