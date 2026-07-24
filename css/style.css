@@ -1099,9 +1099,16 @@ ul { list-style: none; margin: 0; padding: 0; }
    Matches the now-approved Home density (1120px container, 64px
    section padding, tighter heading-group sizing). .section/.section-tint/
    .section-head/.label-blue/.section-title/.underline are shared with
-   Book, so these are scoped to fire only when the page's own nav shows
-   "About" as the active link — i.e. only on about.html — via a :has()
-   check on the header, never matching Book's copy of these classes.
+   Book, so these are scoped to fire only on about.html via the
+   body.about-page class set on that page's <body> tag, never matching
+   Book's copy of these classes.
+
+   Previously this was scoped via `header.nav:has(.nav-links
+   a.active[href="about.html"]) ~ main ...`. That relied on :has(),
+   which some browsers/webviews don't support; an unsupported selector
+   invalidates the whole rule, silently dropping it and falling back to
+   the unscoped base styles (centered heading, no left-alignment). A
+   plain class selector on <body> has no such support gap.
 
    Direct pixel measurement of the original About screenshots (team /
    promise / pricing sections) shows each label+heading sitting flush
@@ -1118,37 +1125,37 @@ ul { list-style: none; margin: 0; padding: 0; }
    and the reference screenshots. No HTML changes, no card/button
    resizing — .team-grid/.promise-grid/.price-grid keep their own
    already-approved 820px width untouched. */
-header.nav:has(.nav-links a.active[href="about.html"]) ~ main .section {
+body.about-page .section {
   padding: 64px 24px;
   max-width: 1120px;
 }
-header.nav:has(.nav-links a.active[href="about.html"]) ~ main .section-tint {
+body.about-page .section-tint {
   padding-top: 64px;
   padding-bottom: 64px;
 }
-header.nav:has(.nav-links a.active[href="about.html"]) ~ main .section-head {
+body.about-page .section-head {
   max-width: 820px;
   margin: 0 auto 40px;
   text-align: left;
 }
-header.nav:has(.nav-links a.active[href="about.html"]) ~ main .label-blue {
+body.about-page .label-blue {
   display: block;
   margin-bottom: 10px;
 }
-header.nav:has(.nav-links a.active[href="about.html"]) ~ main .section-title {
+body.about-page .section-title {
   font-size: clamp(28px, 3.6vw, 36px);
   line-height: 1.18;
 }
-header.nav:has(.nav-links a.active[href="about.html"]) ~ main .underline {
+body.about-page .underline {
   width: 48px;
   margin: 14px 0 0;
 }
 
 @media (max-width: 560px) {
-  header.nav:has(.nav-links a.active[href="about.html"]) ~ main .section {
+  body.about-page .section {
     padding: 46px 18px;
   }
-  header.nav:has(.nav-links a.active[href="about.html"]) ~ main .section-tint {
+  body.about-page .section-tint {
     padding-top: 46px;
     padding-bottom: 46px;
   }
@@ -1157,9 +1164,11 @@ header.nav:has(.nav-links a.active[href="about.html"]) ~ main .underline {
 /* ---------- Book-only container/heading scale ----------
    Same reasoning as the About block above: .section/.section-head/
    .label-blue/.section-title/.underline are shared with Home/About, so
-   these fire only on book.html via a :has() check on the nav's active
-   link. Matches the approved Home/About density (1120px container,
-   64px section padding, tighter heading-group sizing) for the "Your
+   these fire only on book.html via the body.book-page class set on
+   that page's <body> tag (replacing an earlier :has()-based header
+   check — see the About block above for why that was unreliable).
+   Matches the approved Home/About density (1120px container, 64px
+   section padding, tighter heading-group sizing) for the "Your
    info" section only — the trash-day-section heading above it is
    already scoped by its own Book-exclusive class elsewhere.
 
@@ -1178,24 +1187,24 @@ header.nav:has(.nav-links a.active[href="about.html"]) ~ main .underline {
    shows the pills starting at the same left edge as the heading and
    map, so that's corrected too. No HTML changes, no card/pill/map
    resizing. */
-header.nav:has(.nav-links a.active[href="book.html"]) ~ main .section {
+body.book-page .section {
   padding: 64px 24px;
   max-width: 1120px;
 }
-header.nav:has(.nav-links a.active[href="book.html"]) ~ main .section > .section-head {
+body.book-page .section > .section-head {
   max-width: 640px;
   margin: 0 auto 40px;
   text-align: left;
 }
-header.nav:has(.nav-links a.active[href="book.html"]) ~ main .label-blue {
+body.book-page .label-blue {
   display: block;
   margin-bottom: 10px;
 }
-header.nav:has(.nav-links a.active[href="book.html"]) ~ main .section-title {
+body.book-page .section-title {
   font-size: clamp(28px, 3.6vw, 36px);
   line-height: 1.18;
 }
-header.nav:has(.nav-links a.active[href="book.html"]) ~ main .underline {
+body.book-page .underline {
   width: 48px;
   margin: 14px 0 0;
 }
@@ -1209,7 +1218,7 @@ header.nav:has(.nav-links a.active[href="book.html"]) ~ main .underline {
 .weekday-pills { justify-content: flex-start; }
 
 @media (max-width: 560px) {
-  header.nav:has(.nav-links a.active[href="book.html"]) ~ main .section {
+  body.book-page .section {
     padding: 46px 18px;
   }
 }
